@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Countdown Timer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: white;
+            text-align: center;
+        }
+        .countdown {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .time {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1s;
+            flex: 1 1 150px; /* Allow flexibility and minimum width */
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 600px) {
+            .time {
+                font-size: 1.5em; /* Smaller font size for mobile */
+            }
+        }
+        @media (min-width: 601px) {
+            .time {
+                font-size: 3em; /* Larger font size for desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <div class="time" id="days">00 Days</div>
+        <div class="time" id="hours">00 Hours</div>
+        <div class="time" id="minutes">00 Minutes</div>
+        <div class="time" id="seconds">00 Seconds</div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('2024-12-15T12:00:00'); // Set your target date
+            const now = new Date();
+            const timeDiff = targetDate - now;
+
+            if (timeDiff < 0) {
+                document.querySelector('.countdown').innerText = "The target date has already passed.";
+                return;
+            }
+
+            const seconds = Math.floor((timeDiff / 1000) % 60);
+            const minutes = Math.floor((timeDiff / 1000 / 60) % 60);
+            const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+            document.getElementById('days').innerText = `${days} Days`;
+            document.getElementById('hours').innerText = `${hours} Hours`;
+            document.getElementById('minutes').innerText = `${minutes} Minutes`;
+            document.getElementById('seconds').innerText = `${seconds} Seconds`;
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        // Initial call to display immediately
+        updateCountdown();
+    </script>
+</body>
+</html>
