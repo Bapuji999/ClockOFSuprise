@@ -3,85 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Countdown Timer</title>
+    <title>Intern Study Progress: Multi-Threading</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #282c34;
-            color: white;
-            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
-        .countdown {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+        h2 {
+            color: #2d3e50;
         }
-        .time {
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            animation: fadeIn 1s;
-            flex: 1 1 150px; /* Allow flexibility and minimum width */
+        .checkbox-list {
+            margin-left: 20px;
         }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @media (max-width: 600px) {
-            .time {
-                font-size: 1.5em; /* Smaller font size for mobile */
-            }
-        }
-        @media (min-width: 601px) {
-            .time {
-                font-size: 3em; /* Larger font size for desktop */
-            }
+        .checkbox-list label {
+            display: block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="countdown">
-        <div class="time" id="days">00 Days</div>
-        <div class="time" id="hours">00 Hours</div>
-        <div class="time" id="minutes">00 Minutes</div>
-        <div class="time" id="seconds">00 Seconds</div>
+    <h2>Intern Study Progress: Multi-Threading</h2>
+    
+    <h3>1. Thread</h3>
+    <div class="checkbox-list">
+        <label><input type="checkbox"> Understood the basic concept of a thread.</label>
+        <label><input type="checkbox"> Able to create and start a thread using the <code>Thread</code> class.</label>
     </div>
 
-    <script>
-        function updateCountdown() {
-            const targetDate = new Date('2024-12-15T12:00:00'); // Set your target date
-            const now = new Date();
-            const timeDiff = targetDate - now;
+    <h3>2. Process</h3>
+    <div class="checkbox-list">
+        <label><input type="checkbox"> Understand the difference between a process and a thread.</label>
+        <label><input type="checkbox"> Can explain how a process manages threads.</label>
+    </div>
 
-            if (timeDiff < 0) {
-                document.querySelector('.countdown').innerText = "The target date has already passed.";
-                return;
-            }
+    <h3>3. Thread Lifecycle</h3>
+    <div class="checkbox-list">
+        <label><input type="checkbox"> Understands the different states of a thread.</label>
+        <label><input type="checkbox"> Can explain transitions between states and how to control them.</label>
+    </div>
 
-            const seconds = Math.floor((timeDiff / 1000) % 60);
-            const minutes = Math.floor((timeDiff / 1000 / 60) % 60);
-            const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    <h3>4. Thread Priority</h3>
+    <div class="checkbox-list">
+        <label><input type="checkbox"> Knows how to set and modify thread priority.</label>
+        <label><input type="checkbox"> Understands how thread priority affects execution.</label>
+    </div>
 
-            document.getElementById('days').innerText = `${days} Days`;
-            document.getElementById('hours').innerText = `${hours} Hours`;
-            document.getElementById('minutes').innerText = `${minutes} Minutes`;
-            document.getElementById('seconds').innerText = `${seconds} Seconds`;
-        }
+    <h3>5. Thread Pooling</h3>
+    <div class="checkbox-list">
+        <label><input type="checkbox"> Can use the <code>ThreadPool</code> to manage background tasks efficiently.</label>
+        <label><input type="checkbox"> Understands the benefits of thread pooling over creating new threads.</label>
+    </div>
 
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        // Initial call to display immediately
-        updateCountdown();
-    </script>
+    <h3>6. Synchronization</h3>
+    <div class="checkbox-list">
+        <label><input type="checkbox"> Understands and can implement synchronization using locks, mutexes, or semaphores.</label>
+        <label><input type="checkbox"> Can identify and resolve race conditions.</label>
+    </div>
 </body>
 </html>
